@@ -1,0 +1,12 @@
+var Router = Backbone.Router.extend({
+	routes: {
+	'': 'home'
+	}
+});
+var usercontrol =new UserControlsView();
+
+var router = new Router();
+router.on('route:home' , function(){
+	usercontrol.render();
+});
+Backbone.history.start();

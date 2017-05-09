@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ip address:</strong>
+  <%= @instance.ip_address %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @instance.image %>
+</p>
+
+<p>
+  <strong>Launch time:</strong>
+  <%= @instance.launch_time %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @instance.status %>
+</p>
+
+<%= link_to 'Edit', edit_instance_path(@instance) %> |
+<%= link_to 'Back', instances_path %>

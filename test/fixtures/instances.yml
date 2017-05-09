@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ip_address: MyString
+  image: MyString
+  launch_time: 2016-06-10 12:13:12
+  status: MyString
+
+two:
+  ip_address: MyString
+  image: MyString
+  launch_time: 2016-06-10 12:13:12
+  status: MyString

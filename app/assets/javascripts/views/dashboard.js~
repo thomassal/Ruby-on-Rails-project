@@ -1,0 +1,57 @@
+    /*var DashboardView = Backbone.View.extend({
+      // el - stands for element. Every view has a element associate in with HTML
+      //      content will be rendered.
+      el: '#wrapper',
+      
+      // It's the first function called when this view it's instantiated.
+      initialize: function(){
+        this.render();
+      },
+      // $el - it's a cached jQuery object (el), in which you can use jQuery functions
+      //       to push content. Like the Hello World in this case.
+      render: function(){
+        this.$el.html(JST["templates/dashboard"]({model : this.model}));
+        var navbar = new NavbarView();
+        this.$('navbarContainer').append(this.navbar.render().el);
+        //$('user_dashboard').$('navbarContainer').html(JST["templates/navbar"]({model : this.model}));
+      }
+    });*/
+    
+var UserControlsView = Backbone.View.extend({
+    dashboard:null,
+    el: '#wrapper',
+    initialize: function(options) {
+        //var controls = this,
+          //  model = this.model;
+            //this.dashboard = options.dashboard;
+        this.render();
+    },
+    render: function() {
+        //var settings = this.model.toJSON(),
+	this.$el.html(JST["templates/dashboard"]({model : this.model}));	
+        this.$el.find('.users_dashboard').find('.navbarContainer').html(JST['templates/navbar']({model : this.model}))
+        //el.find('.dashboardContainer').html(JST['backbone/templates/users/deploy_contents']({settings:settings}))
+        this.$el.find('.dashboardContainer').html(JST['templates/dashboard_contents']({model : this.model}))
+        //el.find('.consoleLogContainer').html(JST['backbone/templates/users/console_log']({settings:settings}))
+    },
+    events: {
+        "click .navbarContainer a" : "selectMenuItem"
+    },
+    selectMenuItem:function(event) {
+        var menuName = $(event.target).attr('id');
+	console.log(menuName);
+	//var menuName = 'development';
+        //el = this.$el;
+       switch (menuName) {
+          case 'deployment':
+               this.$el.find('#page-wrapper').remove();
+               this.$el.find('.dashboardContainer').html(JST['templates/deploy_contents']({model: this.model}))
+               break;
+          case 'dashboard':
+               this.$el.find('#page-wrapper').remove();
+               this.$el.find('.dashboardContainer').html(JST['templates/dashboard_contents']({model: this.model}))
+               break;
+       }
+    },
+})
+var usercontrol =new UserControlsView();
